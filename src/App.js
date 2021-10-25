@@ -1,10 +1,27 @@
 import './App.scss';
-import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
+import react, {useRef} from 'react';
+import video from '../src/Videos/clip2.mp4';
+import ControlPanel from './Components/ControlPanel/ControlPanel';
+import useVideoPlayer from './Hooks/useVideoPlayer';
 
 function App() {
+  const videoElement = useRef(null);
+  const {
+    playerState,
+    togglePlay,
+    handleOnTimeUpdate,
+    handleVideoProgress,
+    handleVideoSpeed,
+    toggleMute
+  } = useVideoPlayer(videoElement);
+
+
   return (
     <div className="App">
-      <VideoPlayer />
+      <div className='video-wr'>
+          <video src={video} ref={videoElement} onTimeUpdate={handleOnTimeUpdate} />
+      </div>
+      <ControlPanel />
     </div>
   );
 }

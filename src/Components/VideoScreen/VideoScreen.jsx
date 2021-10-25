@@ -7,26 +7,13 @@ import ControlPanel from '../ControlPanel/ControlPanel';
 function VideoScreen() {
 
     const videoRef = useRef(null)
-
-    const playVideo = () => {
-        videoRef.current.play()
-    }
-    const pauseVideo = () => {
-        videoRef.current.pause()
-    }
-
-    const muteVideo = () => {
-        videoRef.current.muted = !videoRef.current.muted;
-    }
+    
 
     return (
-        <div>
+        <div className='video-screen'>
             <video ref={videoRef} width="850" height="478" src={video} />
 
-            <button onClick={playVideo}>PLAY</button>
-            <button onClick={pauseVideo}>PAUSE</button>
-            <button onClick={muteVideo}>MUTE</button>
-            <ControlPanel />
+            <ControlPanel videoRef={videoRef} />
         </div>
     )
 }
