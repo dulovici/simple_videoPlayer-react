@@ -1,5 +1,5 @@
 import './App.scss';
-import react, { useState, useRef } from 'react';
+import { useRef } from 'react';
 import video from '../src/Videos/clip2.mp4';
 import ControlPanel from './Components/ControlPanel/ControlPanel';
 import useVideoPlayer from './Hooks/useVideoPlayer';

@@ -19,3 +19,21 @@
     }
     
 }
+
+
+@media(max-width: 1010px) {
+    .App {
+
+
+        .video-wr {
+            max-width: 375px;
+            height: 260px;
+            
+    
+            video {
+                width: 360px;
+            }
+        }
+    }
+    
+}

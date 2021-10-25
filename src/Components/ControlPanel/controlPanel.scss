@@ -35,5 +35,23 @@
     opacity: 1;
 }
 
+
+@media(max-width: 1010px) {
+    .control-panel {
+        width: 100%;
+        opacity: 1;
+        bottom: 0;
+
+        .progres {
+            width: 30%;
+        }
+        .volume {
+            width: 15%;
+        }
+    }
+
+    
+}
+
     
 
