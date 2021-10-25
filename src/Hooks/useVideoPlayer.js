@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
-const useVideoPlayer = (videoElement)=> {
+const useVideoPlayer = (videoElement) => {
     const [playerState, setPlayerState] = useState({
         isPlaying: false,
         progress: 0,
         speed: 1,
+        volume: 50,
         isMuted: false,
+        isFullScreen: false
     });
 
     const togglePlay = () => {
@@ -15,11 +17,11 @@ const useVideoPlayer = (videoElement)=> {
         });
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         playerState.isPlaying
-        ? videoElement.current.play()
-        : videoElement.current.pause();
-    },[playerState.isPlaying, videoElement])
+            ? videoElement.current.play()
+            : videoElement.current.pause();
+    }, [playerState.isPlaying, videoElement])
 
     const handleOnTimeUpdate = () => {
         const progress = (videoElement.current.currentTime / videoElement.current.duration) * 100;
@@ -47,18 +49,40 @@ const useVideoPlayer = (videoElement)=> {
         })
     }
 
+    const handleVolume = (event) => {
+        const manualVolume = Number(event.target.value / 100);
+        videoElement.current.volume = manualVolume;
+        setPlayerState({
+            ...playerState,
+            volume: manualVolume,
+        })
+    }
+
     const toggleMute = () => {
         setPlayerState({
-          ...playerState,
-          isMuted: !playerState.isMuted,
+            ...playerState,
+            isMuted: !playerState.isMuted,
         });
-      };
+    };
 
     useEffect(() => {
-    playerState.isMuted
-        ? (videoElement.current.muted = true)
-        : (videoElement.current.muted = false);
+        playerState.isMuted
+            ? (videoElement.current.muted = true)
+            : (videoElement.current.muted = false);
     }, [playerState.isMuted, videoElement]);
+
+    const toogleFullScreen = () => {
+        setPlayerState({
+            ...playerState,
+            isFullScreen: !playerState.isFullScreen,
+        })
+    }
+
+    useEffect(() => {
+        playerState.isFullScreen
+            ? (videoElement.current.requestFullscreen())
+            : (videoElement.current.webkitExitFullscreen())
+    }, [playerState.isFullScreen, videoElement])
 
 
     return {
@@ -67,7 +91,9 @@ const useVideoPlayer = (videoElement)=> {
         handleOnTimeUpdate,
         handleVideoProgress,
         handleVideoSpeed,
-        toggleMute
+        handleVolume,
+        toggleMute,
+        toogleFullScreen
     };
 };
 

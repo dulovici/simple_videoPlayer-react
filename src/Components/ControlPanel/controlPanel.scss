@@ -2,23 +2,38 @@
 .control-panel {
     position: relative;
     bottom: 60px;
-    padding: 5px 3px;
+    padding: 10px;
     background-color: rgba(0, 0, 0, 0.397);
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0;
 
-    .progres-bar {
-        height: 6px;
-        border-radius: 6px;
-        background-color: rgba(245, 245, 245, 0.61);
-        cursor: pointer;
-
-        .progres {
-            width: 50%;
-            background-color: whitesmoke;
-            border-radius: 6px;
-            height: 6px;
-        } 
+    .progres {
+        width: 40%;
     }
+
+
+    select {
+        background-color: rgba(0, 0, 0, 0.397);
+        border-radius: 6px; 
+        color: whitesmoke;
+        outline: none;
+    }
+
+    .volume {
+        width: 20%
+    }
+
+    transition: opacity .35s;
+
+    
+}
+
+.control-panel:hover {
+    opacity: 1;
+}
 
     
 
-}
