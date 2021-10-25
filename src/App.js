@@ -1,9 +1,10 @@
 import './App.scss';
+import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 
 function App() {
   return (
     <div className="App">
-      <h1>VIDEO</h1>
+      <VideoPlayer />
     </div>
   );
 }
