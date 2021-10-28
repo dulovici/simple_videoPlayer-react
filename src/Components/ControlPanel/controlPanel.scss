@@ -1,0 +1,57 @@
+
+.control-panel {
+    position: relative;
+    bottom: 60px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.397);
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0;
+
+    .progres {
+        width: 40%;
+    }
+
+
+    select {
+        background-color: rgba(0, 0, 0, 0.397);
+        border-radius: 6px; 
+        color: whitesmoke;
+        outline: none;
+    }
+
+    .volume {
+        width: 20%
+    }
+
+    transition: opacity .35s;
+
+    
+}
+
+.control-panel:hover {
+    opacity: 1;
+}
+
+
+@media(max-width: 1010px) {
+    .control-panel {
+        width: 100%;
+        opacity: 1;
+        bottom: 0;
+
+        .progres {
+            width: 30%;
+        }
+        .volume {
+            width: 15%;
+        }
+    }
+
+    
+}
+
+    
+
